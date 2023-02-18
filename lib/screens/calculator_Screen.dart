@@ -52,11 +52,13 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   child: Container(),
                 ),
                 MathResults(),
-                GestureDetector(
-                  onTap: (){
-                    Get.to(const HistoryScreen());
-                  },
-                  child: Icon(Icons.history),
+                Center(
+                  child: GestureDetector(
+                    onTap: (){
+                      Get.to(const HistoryScreen());
+                    },
+                    child: const Icon(Icons.history),
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

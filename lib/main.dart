@@ -1,11 +1,16 @@
 import 'package:calculator_app/constant/themes.dart';
 import 'package:calculator_app/screens/calculator_Screen.dart';
+import 'package:calculator_app/services/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+late ObjectBox objectBox;
+
 Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  objectBox = await ObjectBox.init();
   runApp(const MyApp());
 }
 

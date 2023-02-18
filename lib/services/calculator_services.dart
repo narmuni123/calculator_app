@@ -1,4 +1,6 @@
 import 'package:calculator_app/constant/prefs.dart';
+import 'package:calculator_app/main.dart';
+import 'package:calculator_app/model/history_model.dart';
 import 'package:get/get.dart';
 
 class CalculatorController extends GetxController {
@@ -91,6 +93,10 @@ class CalculatorController extends GetxController {
       mathResult.value =
           mathResult.value.substring(0, mathResult.value.length - 2);
     }
-    result.add("$num1 ${operator.value} $num2 = ${mathResult.value}");
+    final calculatedResult = CalculatorData(
+      data: "$num1 ${operator.value} $num2 = ${mathResult.value}",
+    );
+
+    objectBox.insertData(calculatedResult);
   }
 }

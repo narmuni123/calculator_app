@@ -346,9 +346,16 @@ packages:
     source: hosted
     version: "1.0.3"
   objectbox:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: objectbox
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.7.2"
+  objectbox_flutter_libs:
+    dependency: "direct main"
+    description:
+      name: objectbox_flutter_libs
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.7.2"
@@ -373,6 +380,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.1"
+  path_provider:
+    dependency: "direct main"
+    description:
+      name: path_provider
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.12"
+  path_provider_android:
+    dependency: transitive
+    description:
+      name: path_provider_android
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.22"
+  path_provider_foundation:
+    dependency: transitive
+    description:
+      name: path_provider_foundation
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.1"
   path_provider_linux:
     dependency: transitive
     description:
