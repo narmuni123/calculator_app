@@ -1,4 +1,5 @@
 
 class TextConstants {
-  static String theme = "theme";
+  static const String theme = "theme";
+  static const String key = "key";
 }

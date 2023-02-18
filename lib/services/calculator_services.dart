@@ -1,3 +1,4 @@
+import 'package:calculator_app/constant/prefs.dart';
 import 'package:get/get.dart';
 
 class CalculatorController extends GetxController {
@@ -78,6 +79,10 @@ class CalculatorController extends GetxController {
         mathResult.value = '${num1 / num2}';
         break;
 
+      case '%':
+        mathResult.value = '${num1 % num2}';
+        break;
+
       default:
         return;
     }
@@ -86,5 +91,6 @@ class CalculatorController extends GetxController {
       mathResult.value =
           mathResult.value.substring(0, mathResult.value.length - 2);
     }
+    result.add("$num1 ${operator.value} $num2 = ${mathResult.value}");
   }
 }

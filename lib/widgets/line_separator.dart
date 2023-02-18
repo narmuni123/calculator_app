@@ -8,9 +8,9 @@ class LineSeparator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 2.h,
+      height: 1.h,
       color: Colors.white.withOpacity(0.4),
-      margin: EdgeInsets.symmetric( vertical: 10.h)
+      margin: EdgeInsets.only(top: 2.h),
     );
   }
 }

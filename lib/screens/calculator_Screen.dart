@@ -1,10 +1,11 @@
 import 'package:calculator_app/constant/prefs.dart';
+import 'package:calculator_app/screens/history.dart';
 import 'package:calculator_app/services/calculator_services.dart';
 import 'package:calculator_app/widgets/calc_button.dart';
 import 'package:calculator_app/widgets/math_results.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
 
 class CalculatorScreen extends StatefulWidget {
   const CalculatorScreen({Key? key}) : super(key: key);
@@ -14,7 +15,6 @@ class CalculatorScreen extends StatefulWidget {
 }
 
 class _CalculatorScreenState extends State<CalculatorScreen> {
-
   final calculatorCtrl = Get.put(CalculatorController());
 
   @override
@@ -26,52 +26,59 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          ObxValue(
-                (data) => Switch(
-              value: isLightTheme.value,
-              onChanged: (val) {
-                isLightTheme.value = val;
-                Get.changeThemeMode(
-                  isLightTheme.value ? ThemeMode.light : ThemeMode.dark,
-                );
-                saveThemeStatus();
-              },
+        appBar: AppBar(
+          actions: [
+            ObxValue(
+              (data) => Switch(
+                value: isLightTheme.value,
+                onChanged: (val) {
+                  isLightTheme.value = val;
+                  Get.changeThemeMode(
+                    isLightTheme.value ? ThemeMode.light : ThemeMode.dark,
+                  );
+                  saveThemeStatus();
+                },
+              ),
+              false.obs,
             ),
-            false.obs,
-          ),
-        ],
-      ),
+          ],
+        ),
         body: SafeArea(
           child: SizedBox(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
                   child: Container(),
                 ),
                 MathResults(),
+                GestureDetector(
+                  onTap: (){
+                    Get.to(const HistoryScreen());
+                  },
+                  child: Icon(Icons.history),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CalculatorButton(
-                      text: 'AC',
-                      bgColor: Color(0xffA5A5A5),
+                      text: 'C',
+                      bgColor: Colors.black12,
                       onPressed: () => calculatorCtrl.resetAll(),
                     ),
                     CalculatorButton(
-                      text: '+/-',
-                      bgColor: Color(0xffA5A5A5),
-                      onPressed: () => calculatorCtrl.changeNegativePositive(),
-                    ),
-                    CalculatorButton(
                       text: 'del',
-                      bgColor: Color(0xffA5A5A5),
+                      bgColor: Colors.black12,
                       onPressed: () => calculatorCtrl.deletedLastEntry(),
                     ),
                     CalculatorButton(
+                      text: '%',
+                      bgColor: Colors.green,
+                      onPressed: () => calculatorCtrl.selectOperation('%'),
+                    ),
+                    CalculatorButton(
                       text: '/',
-                      bgColor: Color(0xffF0A23B),
+                      bgColor: Colors.green,
                       onPressed: () => calculatorCtrl.selectOperation('/'),
                     ),
                   ],
@@ -93,7 +100,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     ),
                     CalculatorButton(
                       text: 'x',
-                      bgColor: Color(0xffF0A23B),
+                      bgColor: Colors.green,
                       onPressed: () => calculatorCtrl.selectOperation('x'),
                     ),
                   ],
@@ -115,7 +122,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     ),
                     CalculatorButton(
                       text: '-',
-                      bgColor: Color(0xffF0A23B),
+                      bgColor: Colors.green,
                       onPressed: () => calculatorCtrl.selectOperation('-'),
                     ),
                   ],
@@ -137,7 +144,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     ),
                     CalculatorButton(
                       text: '+',
-                      bgColor: Color(0xffF0A23B),
+                      bgColor: Colors.green,
                       onPressed: () => calculatorCtrl.selectOperation('+'),
                     ),
                   ],
@@ -146,8 +153,13 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CalculatorButton(
+                      text: '+/-',
+                      bgColor: Colors.green,
+                      onPressed: () => calculatorCtrl.changeNegativePositive(),
+                    ),
+                    CalculatorButton(
                       text: '0',
-                      big: true,
+                      big: false,
                       onPressed: () => calculatorCtrl.addNumber('0'),
                     ),
                     CalculatorButton(
@@ -156,7 +168,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     ),
                     CalculatorButton(
                       text: '=',
-                      bgColor: Color(0xffF0A23B),
+                      bgColor: Colors.green,
                       onPressed: () => calculatorCtrl.calculateResult(),
                     ),
                   ],

@@ -5,6 +5,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 RxBool isLightTheme = false.obs;
 
+List<String> result = [];
+
+
 Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 saveThemeStatus() async {

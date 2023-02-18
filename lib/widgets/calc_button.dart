@@ -8,13 +8,13 @@ class CalculatorButton extends StatelessWidget {
 
   final Function onPressed;
 
-  CalculatorButton({
+  const CalculatorButton({
     Key? key,
     bgColor,
     this.big = false,
     required this.text,
     required this.onPressed,
-  })  : bgColor = bgColor ?? Color(0xff333333),
+  })  : bgColor = bgColor ?? Colors.black12,
         super(key: key);
 
   @override
@@ -27,12 +27,12 @@ class CalculatorButton extends StatelessWidget {
     );
 
     return Container(
-      margin: EdgeInsets.only(bottom: 10.h, right: 5.w, left: 5.w),
+      margin: EdgeInsets.only(bottom: 2.h, right: 4.w, left: 4.w),
       child: TextButton(
         style: buttonStyle,
         child: SizedBox(
-          width: big ? 150 : 65,
-          height: 65,
+          width: 65.w,
+          height: 65.h,
           child: Center(
               child: Text(
             text,
